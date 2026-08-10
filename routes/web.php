@@ -24,4 +24,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/users/destroy/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::resource('/produk', ProdukController::class);
      });
+
+     Route::middleware('role:admin,kasir')->group(function () {
+     Route::resource('/produk', ProdukController::class);
+});
 });

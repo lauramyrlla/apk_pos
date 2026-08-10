@@ -7,7 +7,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
                 <li class="nav-item"> 
-                    <!-- 1. PERBAIKAN: Menghapus 'disabled' & memperbaiki nama route menjadi 'dashboard' -->
+                    <!\
+                    
+                    -- 1. PERBAIKAN: Menghapus 'disabled' & memperbaiki nama route menjadi 'dashboard' -->
                     <a class="nav-link {{ Request::Is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a> 
                 </li> 
 
