@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-    <div class="container-fluid"> 
+    <div class="container"> 
         <a class="navbar-brand" href="#">POS</a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
             <span class="navbar-toggler-icon"></span> 
@@ -16,13 +16,15 @@
                 <li class="nav-item">
     <a class="nav-link {{ Request::Is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Users</a>
 </li>
-
+                <li class="nav-item"> 
+                    <a class="nav-link {{ Request::Is('produk') ? 'active' : '' }}" href="{{ route('produk.index') }}">Produk</a> 
+                </li>
             </ul> 
             
             <!-- 2. PERBAIKAN: Mengubah 'rout' menjadi 'route' pada fungsi logout -->
-            <form class="position-absolute top-50 start-100 translate-middle" action="{{ route('logout') }}" method="POST"> 
+            <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center m-0"> 
                 @csrf 
-                <button type="submit" class="btn btn-danger me-2">Logout</button> 
+                <button type="submit" class="btn btn-danger btn-sm px-3 fw-bold">Logout</button> 
             </form> 
         </div> 
     </div> 
