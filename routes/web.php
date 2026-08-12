@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); 
     
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () { 
-        Route::get('/users', [UserController::class, 'index'])->name('users'); 
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
         Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
         Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
@@ -30,6 +30,6 @@ Route::middleware('auth')->group(function () {
      Route::middleware('role:admin,kasir')->group(function () {
      Route::resource('/produk', ProdukController::class);
      Route::resource('/penjualan', PenjualanController::class);
-     Route::post('/itempenjualan', [ItemPenjualanController::class, 'store'])->name('itempenjualan.store');
+     Route::resource('/itempenjualan', ItemPenjualanController::class);
      });
 });

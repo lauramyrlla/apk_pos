@@ -6,6 +6,19 @@
 
 @include('layouts.navbar')
 
+<div class="container py-4">
+
+@if(session('errors'))
+    <div class="alert alert-danger">
+        {{ session('errors') }}
+    </div>
+@endif
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <h1>Halaman Penjualan</h1>
 <a href="{{ route('penjualan.create') }}" class="btn btn-primary mb-3">Create</a>
 
@@ -14,12 +27,12 @@
         <input
         type="text"
         name="search"
-        value="{{ request()->searchc }}"
+        value="{{ request()->search }}"
         class="form-control"
         placeholder="Search penjualan"
         >
         
-        <button class="btn btn-outhkine-secondery" type="submit">
+        <button class="btn btn-outline-secondery" type="submit">
             Search 
         </button>
     </div>
@@ -40,32 +53,35 @@
     @forelse($sales as $sale)
 <tr>
     <th scope="row">{{$sales->firstItem() + $loop->index}}</th>
-    <th>{{$sale->created_at->translatedFormat('d-m-Y H:i:s')}}</th>
+    <td>{{$sale->created_at->translatedFormat('d-m-Y H:i:s')}}</td>
     <td>{{$sale->user->name}}</td>
-    <td>Rp. {{$sale->total_pembayaran}}</td>
+    <td>Rp. {{number_format($sale->total_pembayaran)}}</td>
     <td>{{$sale->metode_pembayaran}}</td>
     <td>{{$sale->status}}</td>
-    <td class="d-flex gap-1">
+    <td class="d-flex gap-2">
         <a href="" class="btn btn-primary">Detail</a>
+        @can('view', $sale)
         ||
-        <a href="" class="btn btn-warning">Edit</a>
+        <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-warning">Edit</a>
+        @endcan
+        @can('delete', $sale)
         ||
-        <form action="" method="" class="d-inline">
+        <form action="{{ route('penjualan.destroy', $sale) }}" method="POST" class="d-inline">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus penjualan ini?')">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus penjualan ini?')">
                 Hapus
             </button>
         </form>
+        @endcan
     </td>
 </tr>
 @empty
 <tr>
-    <td colspan="6">Data Tidak Ditemukan</td>
+    <td colspan="7">Data Tidak Ditemukan</td>
 </tr>
 @endforelse
 </tbody>
 </table>
 {{$sales->links()}}
-
-
+</div>

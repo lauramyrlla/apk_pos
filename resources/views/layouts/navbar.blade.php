@@ -7,21 +7,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
                 <li class="nav-item"> 
-                    <!\
-                    
-                    -- 1. PERBAIKAN: Menghapus 'disabled' & memperbaiki nama route menjadi 'dashboard' -->
                     <a class="nav-link {{ Request::Is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a> 
                 </li> 
 
                 <li class="nav-item">
-    <a class="nav-link {{ Request::Is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Users</a>
-</li>
+                    <a class="nav-link {{ Request::Is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Users</a>
+                </li>
                 <li class="nav-item"> 
                     <a class="nav-link {{ Request::Is('produk') ? 'active' : '' }}" href="{{ route('produk.index') }}">Produk</a> 
                 </li>
+                <li class="nav-item"> 
+                    <a class="nav-link {{ Request::is('penjualan') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan</a> 
+                </li>
             </ul> 
             
-            <!-- 2. PERBAIKAN: Mengubah 'rout' menjadi 'route' pada fungsi logout -->
             <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center m-0"> 
                 @csrf 
                 <button type="submit" class="btn btn-danger btn-sm px-3 fw-bold">Logout</button> 

@@ -6,11 +6,11 @@
 
 @include('layouts.navbar')
 
-<h1>Halaman Produk</h1>
-<!-- 🛠️ PERBAIKAN: Nama route diganti dari 'users.create' menjadi 'admin.users.create' -->
-<a href="" class="btn btn-secondary">Create</a>
+<h1>Halaman Users</h1>
 
-<form action="{{ route('admin.produk.index') }}" method="GET" class="mb-3">
+<a href="{{ route('admin.users.create') }}" class="btn btn-secondary mb-3">Create</a>
+
+<form action="{{ route('admin.users.index') }}" method="GET" class="mb-3">
     <div class="input-group">
         <input 
             type="text" 
@@ -36,37 +36,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach($products as $product)
-<tr>
-    <th scope="row">{{ $products->firstItem() + $loop->index }}</th>
-    <td>{{ $product->user->name }}</td>
-    <td>{{ $product->foto }}</td>
-    <td>{{ $product->nama }}</td>
-    <td>{{ $product->harga_beli }}</td>
-    <td>{{ $product->harga_jual }}</td>
-    <td>{{ $product->stok }}</td>
-
-    <td>
-        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-warning">
-            Edit Akun
-        </a>
-        ||
-        <!-- 🛠️ PERBAIKAN: Mengisi action dengan route destroy dan method POST -->
-       <form action="" method="" class="d-inline">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-sm btn-danger" onclick="return confirm(' Apakah anda yakin akan menghapu user ini?')">
-                Hapus
-            </button>
-        </form>
-    </td>
-</tr>
-@empaty 
-<tr>
-    <td collspan=8><h1>Data tidak tersedia.</h1></td>
-</tr>
-@endforeach
-</tbody>
+        @forelse ($users as $user)
+            <tr>
+                <th scope="row">{{ $users->firstItem() + $loop->index }}</th>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->role->nama ?? '-' }}</td>
+                <td>
+                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-warning">
+                        Edit Akun
+                    </a>
+                    |
+                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')">
+                            Hapus
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="5" class="text-center">
+                    <h5 class="text-muted">Data tidak tersedia.</h5>
+                </td>
+            </tr>
+        @endforelse
+    </tbody>
 </table>
-{{ $products->links() }}
 
+{{ $users->links() }}
+
+@endsection

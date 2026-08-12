@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ItemPenjualan extends Model
 {
+     
+use HasFactory;
 
     protected $table = 'item_penjualan';
 
@@ -20,5 +23,10 @@ class ItemPenjualan extends Model
     public function produk()
     {
         return $this->belongsTo(Produk::class, 'produk_id');
+    }
+
+    public function penjualan()
+    {
+        return $this->belongsTo(Penjualan::class, 'penjualan_id');
     }
 }
