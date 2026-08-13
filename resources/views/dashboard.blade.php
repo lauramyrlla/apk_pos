@@ -126,7 +126,7 @@
     <!-- Row 1: Today's Sales -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <h1>Today's Sales</h1>
+            <h1>Penjualan Hari Ini</h1>
         </div>
         <!-- Kolom Kiri: Total Nilai Penjualan -->
         <div class="col-md-6 mb-3">
@@ -155,7 +155,7 @@
     <!-- Row 2: Cash & Payment Status -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <h1>Cash & Payment Status</h1>
+            <h1>Status Kas & Pembayaran</h1>
         </div>
         <!-- Kolom Kiri: Total Pembayaran Tunai -->
         <div class="col-md-6 mb-3">
@@ -184,7 +184,7 @@
     <!-- Row 3: Critical Inventory Status -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <h1>Critical Inventory Status</h1>
+            <h1>Status Stok Kritis</h1>
         </div>
         <div class="col-md-6">
             <h3>Daftar produk stok rendah</h3>
@@ -249,7 +249,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h1>Best Seller Products</h1>
+            <h1>Produk Terlaris</h1>
         </div>
     </div>
     <div class="col-md-12">

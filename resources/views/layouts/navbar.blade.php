@@ -23,8 +23,21 @@
             
             <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center m-0"> 
                 @csrf 
-                <button type="submit" class="btn btn-danger btn-sm px-3 fw-bold">Logout</button> 
+                <button type="submit" class="btn btn-logout btn-sm px-3 fw-bold">Keluar</button> 
             </form> 
         </div> 
     </div> 
 </nav>
+
+<style>
+    .btn-logout {
+        background-color: #a9746e;
+        border-color: #a9746e;
+        color: #fff;
+    }
+    .btn-logout:hover {
+        background-color: #925f59;
+        border-color: #925f59;
+        color: #fff;
+    }
+</style>
