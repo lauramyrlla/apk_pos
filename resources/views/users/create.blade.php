@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Produk')
+@section('title', 'Tambah Pengguna')
 
 @section('content')
-<h4>Tambah Produk</h4>
+<h4>Tambah Pengguna</h4>
 
-<form action="{{ route('admin.produk.store') }}" method="POST" enctype="multipart/form-data">
-    @include('produk._form')
+<!-- Form diarahkan ke rute user, bukan produk -->
+<form action="{{ route('admin.users.store') }}" method="POST">
+    <!-- 🛠️ PERBAIKAN UTAMA: Memanggil '_form' milik folder users, bukan produk -->
+    @include('users._form')
 </form>
 @endsection

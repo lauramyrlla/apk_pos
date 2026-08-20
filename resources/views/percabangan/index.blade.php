@@ -1,30 +1,24 @@
-@include('layouts.navbar')
-
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.navbar')
 
+    <div class="container mt-4">
+        <h1>Ini Halaman Percabangan</h1>
 
-
-<h1>ini halaman Percabangan</h1>
-
-
-<html lang="id">
-<body>
-
-    <h2>Data</h2>
-    <p id="hasil"></p>
-
-<script>
-    let nilai = 85;
-    let status = (nilai >= 75) ? "Lulus" : "Tidak Lulus";
-    
-    // Tampilkan ke elemen <p id="hasil">
-    document.getElementById('hasil').innerText = status;
-</script>
-
-</body>
-</html>
-
-
-
+        <h2>Data</h2>
+        
+        {{-- Logika Percabangan Laravel (Blade) --}}
+        @php
+            $nilai = 85;
+        @endphp
+        
+        <p id="hasil">
+            @if($nilai >= 75)
+                Lulus
+            @else
+                Tidak Lulus
+            @endif
+        </p>
+    </div>
+@endsection

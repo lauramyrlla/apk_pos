@@ -141,7 +141,7 @@
     </div>
 @endif
 
-<h1>Halaman Penjualan</h1>
+<h1>🐾 Halaman Penjualan</h1>
 <a href="{{ route('penjualan.create') }}" class="btn btn-buat mb-3">Tambah</a>
 
 <form action="{{ route('penjualan.index') }}" method="GET" class="mb-3">

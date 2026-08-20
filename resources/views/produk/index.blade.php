@@ -117,10 +117,10 @@
 
 <div class="container py-4">
 
-    <h1 class="mb-3">Halaman Produk</h1>
+    <h1 class="mb-3">🐾 Halaman Produk</h1>
 
     @can('create', App\Models\Produk::class)
-        <a href="{{ route('produk.create') }}" class="btn btn-buat mb-3">Tambah</a>
+        <a href="{{ route('produk.create') }}" class="btn btn-buat mb-3"> Tambah</a>
     @endcan
 
     <form action="{{ route('produk.index') }}" method="GET" class="mb-3">
@@ -138,7 +138,6 @@
         </div>
     </form>
 
-    <!-- 1. PERBAIKAN WARNA TABEL: Menambahkan class warna selang-seling abu-abu tipis -->
     <table class="table table-striped table-hover align-middle">
       <thead>
         <tr>
@@ -161,7 +160,6 @@
             <img src="{{ asset('storage/'.$product->foto) }}" width="40" height="40" class="img-thumbnail" style="object-fit: cover;">
         </td>
 
-        <!-- 2. PERBAIKAN UTAMA: Menghapus teks jalur foto lama yang bikin tabel melar memanjang -->
         <td>{{ $product->nama }}</td>
         <td>{{ $product->harga_beli }}</td>
         <td>{{ $product->harga_jual }}</td>
@@ -189,14 +187,13 @@
     @empty
     <tr>
         <td colspan="8" class="text-center py-4 text-muted">
-            <h4>Data tidak tersedia.</h4>
+            <h4>🐾 Data tidak tersedia.</h4>
         </td>
     </tr>
     @endforelse
       </tbody>
     </table>
 
-    <!-- 3. PERBAIKAN POSISI PAGINATION: Menggunakan justify-content-end agar bergeser sejajar di kanan bawah -->
     <div class="d-flex justify-content-end mt-4 hilangkan-teks-pagination">
         {{ $products->links() }}
     </div>

@@ -9,6 +9,7 @@ use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB; // Memastikan DB di-import untuk fungsi destroy
 
 class ProdukController extends Controller
 {
@@ -43,7 +44,11 @@ class ProdukController extends Controller
     {
         $this->authorize('create', Produk::class);
 
-        return view('produk.create');
+        // 🛠️ PERBAIKAN: Buat objek kosong dari model Produk
+        $produk = new Produk();
+
+        // Oper objek kosong tersebut ke view agar _form.blade.php tidak kebingungan
+        return view('produk.create', compact('produk'));
     }
 
     /**
@@ -93,35 +98,35 @@ class ProdukController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, Produk $produk)
-{
-    $dataReq = $request->validated();
+    {
+        $dataReq = $request->validated();
 
-    $data = [
-        'user_id'     => Auth::id(),
-        'nama'        => $dataReq['name'],
-        'harga_beli'  => $dataReq['purchase_price'],
-        'harga_jual'  => $dataReq['selling_price'],
-        'stok'        => $dataReq['stock'],
-    ];
+        $data = [
+            'user_id'     => Auth::id(),
+            'nama'        => $dataReq['name'],
+            'harga_beli'  => $dataReq['purchase_price'],
+            'harga_jual'  => $dataReq['selling_price'],
+            'stok'        => $dataReq['stock'],
+        ];
 
-    // Jika upload foto baru
-    if ($request->hasFile('foto')) {
+        // Jika upload foto baru
+        if ($request->hasFile('foto')) {
 
-        // Hapus foto lama (jika ada & memang tersimpan)
-        if (
-            $produk->foto &&
-            Storage::disk('public')->exists($produk->foto)
-        ) {
-            Storage::disk('public')->delete($produk->foto);
+            // Hapus foto lama (jika ada & memang tersimpan)
+            if (
+                $produk->foto &&
+                Storage::disk('public')->exists($produk->foto)
+            ) {
+                Storage::disk('public')->delete($produk->foto);
+            }
+            // Simpan foto baru
+            $data['foto'] = $request->file('foto')->store('products', 'public');
         }
-        // Simpan foto baru
-        $data['foto'] = $request->file('foto')->store('products', 'public');
+
+        $produk->update($data);
+
+        return redirect()->route('produk.edit', $produk->id)->with('success', 'Product updated successfully.');
     }
-
-    $produk->update($data);
-
-    return redirect()->route('produk.edit', $produk->id)->with('success', 'Product updated successfully.');
-}
 
     /**
      * Remove the specified resource from storage.
@@ -138,6 +143,6 @@ class ProdukController extends Controller
 
         $produk->delete();
 
-        return redirect()->route('admin.produk.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('produk.index')->with('success', 'Product deleted successfully.');
     }
 }
