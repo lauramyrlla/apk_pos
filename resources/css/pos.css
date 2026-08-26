@@ -1,0 +1,673 @@
+html:has(.penjualan-page),
+body:has(.penjualan-page) {
+    background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+    min-height: 100%;
+}
+
+body:has(.penjualan-page) {
+    min-height: 100vh;
+}
+
+.penjualan-page h4 {
+    font-weight: 700;
+    color: #4a636b;
+}
+
+.penjualan-page .card {
+    background: #fdfcfb;
+    border: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.penjualan-page .card-header {
+    background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 0.85rem 1.25rem;
+}
+
+.penjualan-page .card-body {
+    padding: 1.25rem;
+}
+
+.penjualan-page .table {
+    background: #fdfcfb;
+    margin-bottom: 0;
+}
+
+.penjualan-page .table-borderless th,
+.penjualan-page .table-borderless td {
+    color: #5f7a82;
+    padding: 0.4rem 0.5rem;
+}
+
+.penjualan-page .table-borderless th {
+    color: #4a636b;
+    font-weight: 600;
+}
+
+.penjualan-page .table-bordered thead tr {
+    background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+}
+
+.penjualan-page .table-bordered thead th {
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.7rem;
+}
+
+.penjualan-page .table-bordered tbody tr {
+    border-bottom: 1px solid #e5e1da;
+}
+
+.penjualan-page .table-bordered tbody td {
+    color: #5f7a82;
+    padding: 0.6rem 0.7rem;
+    vertical-align: middle;
+}
+
+.penjualan-page .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7f9fa;
+}
+
+.penjualan-page tfoot th {
+    color: #4a636b;
+    background: #f2f6f7;
+    padding: 0.7rem;
+    border-top: 2px solid #d9e3e6;
+}
+
+.penjualan-page .btn-secondary {
+    background-color: #89A8B2;
+    border-color: #89A8B2;
+}
+.penjualan-page .btn-secondary:hover {
+    background-color: #6f939d;
+    border-color: #6f939d;
+}
+
+/* index.blade.php penjualan */
+
+  body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .container.py-4 h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #4a636b;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .table {
+        background: #fdfcfb;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+    }
+
+    .table thead tr {
+        background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+        color: #fff;
+    }
+
+    .table thead th {
+        border: none;
+        font-weight: 600;
+        padding: 0.75rem;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #e5e1da;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f6f7;
+    }
+
+    .table tbody td,
+    .table tbody th {
+        padding: 0.65rem 0.75rem;
+        color: #5f7a82;
+        vertical-align: middle;
+    }
+
+    .table .text-muted {
+        color: #9caeb3 !important;
+    }
+
+    .pagination .page-link {
+        color: #89A8B2;
+        border: 1px solid #d9e3e6;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #f2f6f7;
+        color: #6f939d;
+    }
+
+    .pagination-wrapper p {
+        display: none !important;
+    }
+
+    .pagination-wrapper div:first-child {
+        display: none !important;
+    }
+
+    /* Tombol Create disesuaikan biar senada, gak nabrak tema */
+    .btn-buat {
+        background-color: #4a636b;
+        border-color: #4a636b;
+        color: #fff;
+    }
+    .btn-buat:hover {
+        background-color: #3a4f56;
+        border-color: #3a4f56;
+        color: #fff;
+    }
+
+    /* Tombol Detail */
+    .btn-detail {
+        background-color: #5f7a82;
+        border-color: #5f7a82;
+        color: #fff;
+    }
+    .btn-detail:hover {
+        background-color: #4a636b;
+        border-color: #4a636b;
+        color: #fff;
+    }
+
+    /* Warna tombol Edit & Hapus disesuaikan biar tidak mencolok */
+    .btn-edit-akun {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+        color: #fff;
+    }
+    .btn-edit-akun:hover {
+        background-color: #6f939d;
+        border-color: #6f939d;
+        color: #fff;
+    }
+
+    .btn-hapus {
+        background-color: #a9746e;
+        border-color: #a9746e;
+    }
+    .btn-hapus:hover {
+        background-color: #925f59;
+        border-color: #925f59;
+        color: #fff;
+    }
+
+    /* pos.blade.php penjualan */
+
+    body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .container.py-4 h4 {
+        font-weight: 700;
+        color: #4a636b;
+    }
+
+    .card {
+        background: #fdfcfb;
+        border: none;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+    }
+
+    /* Daftar produk (kiri) */
+    .form-control:focus {
+        border-color: #89A8B2;
+        box-shadow: 0 0 0 0.2rem rgba(137, 168, 178, 0.25);
+    }
+
+    .btn-outline-primary {
+        color: #4a636b;
+        border-color: #d9e3e6;
+        background: #fff;
+    }
+    .btn-outline-primary:hover {
+        background-color: #f2f6f7;
+        border-color: #89A8B2;
+        color: #4a636b;
+    }
+
+    .btn-primary {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+    }
+    .btn-primary:hover {
+        background-color: #6f939d;
+        border-color: #6f939d;
+    }
+
+    /* Tabel keranjang (kanan) */
+    .table {
+        background: #fdfcfb;
+        margin-bottom: 0;
+    }
+
+    .table thead tr {
+        background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+        color: #fff;
+    }
+
+    .table thead th {
+        border: none;
+        font-weight: 600;
+        padding: 0.7rem;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #e5e1da;
+    }
+
+    .table tbody td {
+        padding: 0.6rem 0.7rem;
+        color: #5f7a82;
+        vertical-align: middle;
+    }
+
+    .card-footer {
+        background: #f2f6f7;
+        border-top: 1px solid #e5e1da;
+        padding: 1rem 1.25rem;
+    }
+
+    .card-footer strong {
+        color: #4a636b;
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Tombol checkout senada tombol Tambah di halaman Produk */
+    .btn-success {
+        background-color: #4a636b;
+        border-color: #4a636b;
+    }
+    .btn-success:hover {
+        background-color: #3a4f56;
+        border-color: #3a4f56;
+    }
+
+    /* Tombol hapus/batal senada tombol Hapus di halaman Produk */
+    .btn-danger {
+        background-color: #a9746e;
+        border-color: #a9746e;
+    }
+    .btn-danger:hover {
+        background-color: #925f59;
+        border-color: #925f59;
+    }
+
+    .btn-outline-danger {
+        color: #a9746e;
+        border-color: #a9746e;
+    }
+    .btn-outline-danger:hover {
+        background-color: #a9746e;
+        border-color: #a9746e;
+        color: #fff;
+    }
+
+    .btn-danger.btn-sm {
+        background-color: #a9746e;
+        border-color: #a9746e;
+    }
+
+    /* index.blade.php produk*/
+
+    body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .container.py-4 h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #4a636b;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .table {
+        background: #fdfcfb;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+    }
+
+    .table thead tr {
+        background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+        color: #fff;
+    }
+
+    .table thead th {
+        border: none;
+        font-weight: 600;
+        padding: 0.75rem;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #e5e1da;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f6f7;
+    }
+
+    .table tbody td,
+    .table tbody th {
+        padding: 0.65rem 0.75rem;
+        color: #5f7a82;
+        vertical-align: middle;
+    }
+
+    .table .text-muted {
+        color: #9caeb3 !important;
+    }
+
+    .pagination .page-link {
+        color: #89A8B2;
+        border: 1px solid #d9e3e6;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #f2f6f7;
+        color: #6f939d;
+    }
+
+    .hilangkan-teks-pagination p {
+        display: none !important;
+    }
+    .hilangkan-teks-pagination div:first-child {
+        display: none !important;
+    }
+
+    /* Tombol Create disesuaikan biar senada, gak nabrak tema */
+    .btn-buat {
+        background-color: #4a636b;
+        border-color: #4a636b;
+        color: #fff;
+    }
+    .btn-buat:hover {
+        background-color: #3a4f56;
+        border-color: #3a4f56;
+        color: #fff;
+    }
+
+    /* Warna tombol Edit & Hapus disesuaikan biar tidak mencolok */
+    .btn-edit-akun {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+        color: #fff;
+    }
+    .btn-edit-akun:hover {
+        background-color: #6f939d;
+        border-color: #6f939d;
+        color: #fff;
+    }
+
+    .btn-hapus {
+        background-color: #a9746e;
+        border-color: #a9746e;
+        color: #fff;
+    }
+    .btn-hapus:hover {
+        background-color: #925f59;
+        border-color: #925f59;
+        color: #fff;
+    }
+
+    /* _form.blade.php produk */
+    body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .form-produk-card {
+        background: #fdfcfb;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+        padding: 1.75rem;
+        max-width: 640px;
+    }
+
+    .form-produk-card label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #4a636b;
+        margin-bottom: 0.3rem;
+        display: inline-block;
+    }
+
+    .form-produk-card .mb-3-custom {
+        margin-bottom: 1.1rem;
+    }
+
+    .form-produk-card .form-control {
+        border: 1px solid #d9e3e6;
+        border-radius: 0.5rem;
+        padding: 0.55rem 0.8rem;
+        color: #5f7a82;
+    }
+
+    .form-produk-card .form-control:focus {
+        border-color: #89A8B2;
+        box-shadow: 0 0 0 0.2rem rgba(137, 168, 178, 0.25);
+    }
+
+    .form-produk-card .form-control.is-invalid {
+        border-color: #a9746e;
+    }
+
+    .form-produk-card .invalid-feedback {
+        color: #a9746e;
+    }
+
+    .form-produk-card .img-thumbnail {
+        border: 1px solid #e5e1da;
+        border-radius: 0.5rem;
+        background: #fff;
+    }
+
+    .form-produk-card .btn-simpan {
+        background-color: #4a636b;
+        border-color: #4a636b;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.55rem 1.4rem;
+        border-radius: 0.5rem;
+    }
+
+    .form-produk-card .btn-simpan:hover {
+        background-color: #3a4f56;
+        border-color: #3a4f56;
+        color: #fff;
+    }
+
+    /* index.blade.php users */
+     body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .container.mt-4 h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #4a636b;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+
+    .table {
+        background: #fdfcfb;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+    }
+
+    .table thead tr {
+        background: linear-gradient(135deg, #89A8B2, #B3C8CF);
+        color: #fff;
+    }
+
+    .table thead th {
+        border: none;
+        font-weight: 600;
+        padding: 0.75rem;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #e5e1da;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f6f7;
+    }
+
+    .table tbody td {
+        padding: 0.65rem 0.75rem;
+        color: #5f7a82;
+        vertical-align: middle;
+    }
+
+    .table .text-muted {
+        color: #9caeb3 !important;
+    }
+
+    .pagination .page-link {
+        color: #89A8B2;
+        border: 1px solid #d9e3e6;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #f2f6f7;
+        color: #6f939d;
+    }
+
+    /* Sembunyiin teks "Showing X to Y of Z results" */
+    .pagination-wrapper p {
+        display: none;
+    }
+
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Warna tombol Edit Akun & Hapus disesuaikan biar tidak mencolok */
+    .btn-edit-akun {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+        color: #fff;
+    }
+    .btn-edit-akun:hover {
+        background-color: #6f939d;
+        border-color: #6f939d;
+        color: #fff;
+    }
+
+    .btn-hapus {
+        background-color: #a9746e;
+        border-color: #a9746e;
+        color: #fff;
+    }
+    .btn-hapus:hover {
+        background-color: #925f59;
+        border-color: #925f59;
+        color: #fff;
+    }
+
+    /* _form.blade.php users */
+
+    body {
+        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+        min-height: 100vh;
+    }
+
+    .form-user-card {
+        background: #fdfcfb;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
+        padding: 1.75rem;
+        max-width: 560px;
+    }
+
+    .form-user-card .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #4a636b;
+    }
+
+    .form-user-card .form-control,
+    .form-user-card .form-select {
+        border: 1px solid #d9e3e6;
+        border-radius: 0.5rem;
+        padding: 0.55rem 0.8rem;
+        color: #5f7a82;
+    }
+
+    .form-user-card .form-control:focus,
+    .form-user-card .form-select:focus {
+        border-color: #89A8B2;
+        box-shadow: 0 0 0 0.2rem rgba(137, 168, 178, 0.25);
+    }
+
+    .form-user-card .form-control.is-invalid,
+    .form-user-card .form-select.is-invalid {
+        border-color: #a9746e;
+    }
+
+    .form-user-card .invalid-feedback {
+        color: #a9746e;
+    }
+
+    /* Tombol Simpan senada tombol Tambah di halaman Produk */
+    .form-user-card .btn-success {
+        background-color: #4a636b;
+        border-color: #4a636b;
+    }
+    .form-user-card .btn-success:hover {
+        background-color: #3a4f56;
+        border-color: #3a4f56;
+    }
+
+    /* Tombol Kembali senada tombol Edit di halaman Produk */
+    .form-user-card .btn-secondary {
+        background-color: #89A8B2;
+        border-color: #89A8B2;
+        color: #fff;
+    }
+    .form-user-card .btn-secondary:hover {
+        background-color: #6f939d;
+        border-color: #6f939d;
+        color: #fff;
+    }

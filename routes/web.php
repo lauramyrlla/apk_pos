@@ -8,7 +8,6 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PerulanganController;
 use App\Http\Controllers\PercabanganController;
-use App\Http\Controllers\JenisController;
 use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () { 
@@ -34,9 +33,5 @@ Route::middleware('auth')->group(function () {
      Route::resource('/produk', ProdukController::class);
      Route::resource('/penjualan', PenjualanController::class);
      Route::resource('/itempenjualan', ItemPenjualanController::class);
-     Route::get('/perulangan', [PerulanganController::class, 'perulangan'])->name('perulangan.index');
-     Route::get('/percabangan', [PercabanganController::class, 'percabangan'])->name('percabangan.index');
-     Route::resource('/jenis', JenisController::class);
-
      });
 });

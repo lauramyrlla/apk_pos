@@ -6,127 +6,7 @@
 
 @include('layouts.navbar')
 
-<style>
-    body {
-        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
-        min-height: 100vh;
-    }
-
-    .container.py-4 h4 {
-        font-weight: 700;
-        color: #4a636b;
-    }
-
-    .card {
-        background: #fdfcfb;
-        border: none;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(137, 168, 178, 0.15);
-    }
-
-    /* Daftar produk (kiri) */
-    .form-control:focus {
-        border-color: #89A8B2;
-        box-shadow: 0 0 0 0.2rem rgba(137, 168, 178, 0.25);
-    }
-
-    .btn-outline-primary {
-        color: #4a636b;
-        border-color: #d9e3e6;
-        background: #fff;
-    }
-    .btn-outline-primary:hover {
-        background-color: #f2f6f7;
-        border-color: #89A8B2;
-        color: #4a636b;
-    }
-
-    .btn-primary {
-        background-color: #89A8B2;
-        border-color: #89A8B2;
-    }
-    .btn-primary:hover {
-        background-color: #6f939d;
-        border-color: #6f939d;
-    }
-
-    /* Tabel keranjang (kanan) */
-    .table {
-        background: #fdfcfb;
-        margin-bottom: 0;
-    }
-
-    .table thead tr {
-        background: linear-gradient(135deg, #89A8B2, #B3C8CF);
-        color: #fff;
-    }
-
-    .table thead th {
-        border: none;
-        font-weight: 600;
-        padding: 0.7rem;
-    }
-
-    .table tbody tr {
-        border-bottom: 1px solid #e5e1da;
-    }
-
-    .table tbody td {
-        padding: 0.6rem 0.7rem;
-        color: #5f7a82;
-        vertical-align: middle;
-    }
-
-    .card-footer {
-        background: #f2f6f7;
-        border-top: 1px solid #e5e1da;
-        padding: 1rem 1.25rem;
-    }
-
-    .card-footer strong {
-        color: #4a636b;
-        display: block;
-        margin-bottom: 0.6rem;
-    }
-
-    /* Tombol checkout senada tombol Tambah di halaman Produk */
-    .btn-success {
-        background-color: #4a636b;
-        border-color: #4a636b;
-    }
-    .btn-success:hover {
-        background-color: #3a4f56;
-        border-color: #3a4f56;
-    }
-
-    /* Tombol hapus/batal senada tombol Hapus di halaman Produk */
-    .btn-danger {
-        background-color: #a9746e;
-        border-color: #a9746e;
-    }
-    .btn-danger:hover {
-        background-color: #925f59;
-        border-color: #925f59;
-    }
-
-    .btn-outline-danger {
-        color: #a9746e;
-        border-color: #a9746e;
-    }
-    .btn-outline-danger:hover {
-        background-color: #a9746e;
-        border-color: #a9746e;
-        color: #fff;
-    }
-
-    .btn-danger.btn-sm {
-        background-color: #a9746e;
-        border-color: #a9746e;
-    }
-</style>
-
-<div class="container py-4">
+<div class="container penjualan-page py-4">
 
     @if(session('errors'))
         <div class="alert alert-danger">
@@ -155,7 +35,7 @@
                                 placeholder="Cari produk..."
                                 onkeyup="this.form.submit()">
                         </form>
-                    </div>>
+                    </div>
 
                     @foreach($products as $product)
                     <form method="POST" action="{{ route('itempenjualan.store') }}" class="row mb-2">

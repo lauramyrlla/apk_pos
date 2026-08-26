@@ -21,18 +21,6 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('penjualan') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('perulangan') ? 'active' : '' }}" href="{{ route('perulangan.index') }}">Perulangan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('percabangan') ? 'active' : '' }}" href="{{ route('percabangan.index') }}">Percabangan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('penjualan') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Varian</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('penjualan') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Tipe Data</a>
-                </li>
             </ul>
 
             <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center m-0">
