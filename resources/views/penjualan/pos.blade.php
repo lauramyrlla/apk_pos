@@ -25,7 +25,6 @@
             <div class="card">
                 <div class="card-body" style="max-height:70vh; overflow:auto">
                     
-                    <!-- PERBAIKAN 1: Merapikan struktur form pencarian produk agar tidak tabrakan -->
                     <div class="mb-3">
                         <form method="GET" action="{{ route('penjualan.create') }}">
                             <input type="text"
@@ -94,8 +93,10 @@
                                     @csrf @method('PUT')
                                     <input type="number" name="quantity"
                                         value="{{ $item->kuantitas }}"
+                                        min="1"
                                         class="form-control form-control-sm"
-                                        style="width: 70px;">
+                                        style="width: 70px;"
+                                        onchange="this.form.submit()">
                                 </form>
                             </td>
                             <td >Rp {{ number_format($item->subtotal) }}</td>
@@ -139,7 +140,7 @@
                     </form>
                     @can('delete', $sale)
                     <form action="{{ route('penjualan.destroy', $sale->id) }}" method="POST"
-                    onsubmit="return confirm('Yakin ingin membatalkan transaksi?')" >
+                    onsubmit="return confirm('Yakin ingin membatalkan transaksi?')"class="mt-3" >
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-outline-danger w-100" {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}>

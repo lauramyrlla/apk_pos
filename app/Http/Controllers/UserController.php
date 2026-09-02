@@ -91,7 +91,7 @@ return redirect()->route('admin.users')->with('success', 'User berhasil dibuat')
 
         $user->save();
 
-        return redirect()->route('admin.users.edit', $user->id)->with('success', 'User updated');
+         return redirect()->route('admin.users.index')->with('success', 'User updated');
     }
 
     /**

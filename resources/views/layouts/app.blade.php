@@ -9,14 +9,12 @@
 </head>
 <body>
     <div class="container">
-
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-        
-          @yield('content')
+        @yield('content')
     </div>
 </body>
 </html>

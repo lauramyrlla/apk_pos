@@ -9,7 +9,7 @@ use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB; // Memastikan DB di-import untuk fungsi destroy
+use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
@@ -23,14 +23,14 @@ class ProdukController extends Controller
         $keyword = $request->input('search');
 
         if($keyword) {
-            $products = Produk::when($keyword, function ($query) use ($keyword) {
+            $products = Produk::with('jenis')->when($keyword, function ($query) use ($keyword) {
                 $query->where('nama', 'like', '%' . $keyword . '%');
             })
             ->orderBy('nama')
             ->paginate(10)
             ->withQueryString();
         } else {
-            $products = Produk::latest()->paginate(10)->withQueryString();
+            $products = Produk::with('jenis')->latest()->paginate(10)->withQueryString();
         }
 
 
@@ -44,11 +44,11 @@ class ProdukController extends Controller
     {
         $this->authorize('create', Produk::class);
 
-        // 🛠️ PERBAIKAN: Buat objek kosong dari model Produk
         $produk = new Produk();
 
-        // Oper objek kosong tersebut ke view agar _form.blade.php tidak kebingungan
-        return view('produk.create', compact('produk'));
+        $jenisList = \App\Models\Jenis::orderBy('nama')->get();
+
+        return view('produk.create', compact('produk', 'jenisList'));
     }
 
     /**
@@ -61,6 +61,7 @@ class ProdukController extends Controller
         $dataReq = $request->validated();
 
         $data['user_id'] = Auth::id();
+        $data['jenis_id'] = $dataReq['jenis_id'] ?? null;
         $data['nama'] = $dataReq['name'];
         $data['harga_beli'] = $dataReq['purchase_price'];
         $data['harga_jual'] = $dataReq['selling_price'];
@@ -90,8 +91,10 @@ class ProdukController extends Controller
     public function edit(Produk $produk)
     {
         $this->authorize('update', $produk);
-        
-        return view('produk.edit', compact('produk'));
+
+        $jenisList = \App\Models\Jenis::orderBy('nama')->get();
+
+        return view('produk.edit', compact('produk', 'jenisList'));
     }
 
     /**
@@ -103,6 +106,7 @@ class ProdukController extends Controller
 
         $data = [
             'user_id'     => Auth::id(),
+            'jenis_id'    => $dataReq['jenis_id'] ?? null,
             'nama'        => $dataReq['name'],
             'harga_beli'  => $dataReq['purchase_price'],
             'harga_jual'  => $dataReq['selling_price'],

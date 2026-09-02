@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo; // Tambahan import untuk relasi kasir
+use Illuminate\Database\Eloquent\Relations\BelongsTo; 
+use App\Models\Penjualan;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Penjualan extends Model

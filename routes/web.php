@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemPenjualanController;
 use App\Http\Controllers\PenjualanController; 
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\JenisController;
 use App\Http\Controllers\PerulanganController;
 use App\Http\Controllers\PercabanganController;
 use App\Http\Controllers\UserController;
@@ -26,11 +27,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
         Route::post('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/destroy/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-        Route::resource('/produk', ProdukController::class);
      });
 
      Route::middleware('role:admin,kasir')->group(function () {
      Route::resource('/produk', ProdukController::class);
+     Route::resource('/jenis', JenisController::class)->parameters(['jenis' => 'jenis']);
+
      Route::resource('/penjualan', PenjualanController::class);
      Route::resource('/itempenjualan', ItemPenjualanController::class);
      });

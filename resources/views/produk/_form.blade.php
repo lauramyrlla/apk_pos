@@ -82,7 +82,11 @@
         @enderror
     </div>
 
-    <button class="btn btn-simpan mt-2" type="submit">Simpan</button>
+        <button class="btn btn-simpan mt-2" type="submit">Simpan</button>
+    <a href="{{ route('produk.index') }}" class="btn btn-secondary mt-2 ms-2" style="padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">Kembali</a>
+
+</div>
+
 
 </div>
 

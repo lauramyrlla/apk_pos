@@ -13,11 +13,6 @@
         {{ session('errors') }}
     </div>
 @endif
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
 
 <h1>🐾 Halaman Penjualan</h1>
 <a href="{{ route('penjualan.create') }}" class="btn btn-buat mb-3">Tambah</a>

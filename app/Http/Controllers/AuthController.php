@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard')->with('succes', 'Selamat Datang,' . Auth::user()->name);
+        return redirect()->route('dashboard')->with('success', 'Selamat Datang,' . Auth::user()->name);
         }
 
         return back()->withErrors([

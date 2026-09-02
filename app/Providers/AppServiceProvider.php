@@ -13,16 +13,19 @@ use App\Models\ItemPenjualan;
 use App\Policies\ItemPenjualanPolicy;
 use App\Policies\PenjualanPolicy;
 use App\Policies\ProdukPolicy;
+use App\Models\Jenis;
+use App\Policies\JenisPolicy;
 
 
 class AppServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        User::class => DashboardPolicy::class,
-        Produk::class => ProdukPolicy::class,
-        Penjualan::class => PenjualanPolicy::class,
-        ItemPenjualan::class => ItemPenjualan::class
-    ];
+    User::class => DashboardPolicy::class,
+    Produk::class => ProdukPolicy::class,
+    Jenis::class => JenisPolicy::class,   // ← baris baru
+    Penjualan::class => PenjualanPolicy::class,
+    ItemPenjualan::class => ItemPenjualan::class
+];
     /**
      * Register any application services.
      */
