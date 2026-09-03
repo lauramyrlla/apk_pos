@@ -6,7 +6,7 @@
 
 @include('layouts.navbar')
 
-<div class="container penjualan-page py-4">
+<div class="container produk-page py-4">
 
     <h1 class="mb-3">🐾 Halaman Produk</h1>
 
