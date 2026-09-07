@@ -1336,6 +1336,6 @@ body:has(.penjualan-page) {
 /* create jenis */
 
 .form-jenis-wrapper {
-    max-width: 640px; /* sesuaikan sama max-width card */
+    max-width: 640px;
     margin: 0 auto;
 }
