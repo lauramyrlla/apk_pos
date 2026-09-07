@@ -8,7 +8,8 @@
         <input type="text" 
                name="name"
                class="form-control @error('name') is-invalid @enderror"
-               value="{{ old('name', $user->name ?? '') }}">
+               value="{{ old('name', $user->name ?? '') }}"
+               placeholder="Masukan Nama">
         @error('name')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -22,7 +23,8 @@
         <input type="email" 
                name="email"
                class="form-control @error('email') is-invalid @enderror"
-               value="{{ old('email', $user->email ?? '') }}">
+               value="{{ old('email', $user->email ?? '') }}"
+               placeholder="Masukan Email">
         @error('email')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -35,7 +37,8 @@
         <label class="form-label">Password</label>
         <input type="password" 
                name="password"
-               class="form-control @error('password') is-invalid @enderror">
+               class="form-control @error('password') is-invalid @enderror"
+               placeholder="Masukan Password">
         @error('password')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -65,7 +68,6 @@
     <!-- Tombol Aksi -->
     <button type="submit" class="btn btn-success">Simpan</button>
 
-    <!-- 🛠️ PERBAIKAN DI SINI: Mengubah admin.users menjadi admin.users.index -->
     <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Kembali</a>
 
 </div>

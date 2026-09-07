@@ -46,7 +46,8 @@
         <label>Nama Produk</label><br>
         <input type="text" name="name" 
                class="form-control @error('name') is-invalid @enderror" 
-               value="{{ old('name', $produk->nama) ?? '' }}"> 
+               value="{{ old('name', $produk->nama) ?? '' }}"
+               placeholder="Masukan Nama Produk"> 
         @error('name')
             <div class="invalid-feedback d-block"> 
                 {{ $message }}
@@ -58,7 +59,8 @@
         <label>Harga Beli</label><br>
         <input type="number" name="purchase_price"
                class="form-control @error('purchase_price') is-invalid @enderror"
-               value="{{ old('purchase_price', $produk->harga_beli) ?? '' }}">
+               value="{{ old('purchase_price', $produk->harga_beli) ?? '' }}"
+               placeholder="Masukan Harga Beli">
         @error('purchase_price')
             <div class="invalid-feedback d-block"> 
                 {{ $message }}
@@ -70,7 +72,8 @@
         <label>Harga Jual</label><br>
         <input type="number" name="selling_price"
                class="form-control @error('selling_price') is-invalid @enderror"
-               value="{{ old('selling_price', $produk->harga_jual) ?? '' }}"> 
+               value="{{ old('selling_price', $produk->harga_jual) ?? '' }}"
+               placeholder="Masukan Harga Jual"> 
         @error('selling_price')
             <div class="invalid-feedback d-block"> 
                 {{ $message }}
@@ -82,7 +85,8 @@
         <label>Stok</label><br>
         <input type="number" name="stock"
                class="form-control @error('stock') is-invalid @enderror"
-               value="{{ old('stock', $produk->stok) ?? '' }}"> 
+               value="{{ old('stock', $produk->stok) ?? '' }}"
+               placeholder="Masukan Jumlah Stok"> 
         @error('stock')
             <div class="invalid-feedback d-block"> 
                 {{ $message }}
