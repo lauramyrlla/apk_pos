@@ -15,7 +15,7 @@
     @endcan
 
     <form action="{{ route('produk.index') }}" method="GET" class="mb-3">
-        <div class="input-group" style="max-width: 400px;">
+        <div class="input-group">
             <input
                 type="text"
                 name="search"

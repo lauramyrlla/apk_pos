@@ -27,7 +27,7 @@
         placeholder="Cari penjualan"
         >
         
-        <button class="btn btn-outline-secondery" type="submit">
+        <button class="btn btn-outline-secondary" type="submit">
             Cari 
         </button>
     </div>

@@ -15,7 +15,7 @@
     @endcan
 
     <form action="{{ route('jenis.index') }}" method="GET" class="mb-3">
-        <div class="input-group" style="max-width: 400px;">
+        <div class="input-group search-input">
             <input
                 type="text"
                 name="search"
@@ -53,7 +53,6 @@
         </td>
 
         <td>{{ $jenis->nama }}</td>
-        <!-- Baris yang salah tadi sudah dihapus dari sini -->
         <td>
             <div class="d-flex align-items-center gap-1">
                 @can('update', $jenis)
