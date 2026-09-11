@@ -6,9 +6,7 @@ use App\Http\Requests\SearchRequest;
 use App\Http\Requests\Jenis\UpdateRequest;
 use App\Http\Requests\Jenis\StoreRequest;
 use App\Models\Jenis;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class JenisController extends Controller
@@ -19,16 +17,13 @@ class JenisController extends Controller
 
         $keyword = $request->input('search');
 
-        if ($keyword) {
-            $jenisList = Jenis::when($keyword, function ($query) use ($keyword) {
-                $query->where('nama', 'like', '%' . $keyword . '%');
+        $jenisList = Jenis::with('user')
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('nama_jenis', 'like', '%' . $keyword . '%');
             })
-            ->orderBy('nama')
+            ->orderBy('nama_jenis')
             ->paginate(10)
             ->withQueryString();
-        } else {
-            $jenisList = Jenis::latest()->paginate(10)->withQueryString();
-        }
 
         return view('jenis.index', compact('jenisList'));
     }
@@ -48,12 +43,10 @@ class JenisController extends Controller
 
         $dataReq = $request->validated();
 
-        $data['user_id'] = Auth::id();
-        $data['nama'] = $dataReq['name'];
-
-        if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('jenis', 'public');
-        }
+        $data = [
+            'user_id'    => Auth::id(),
+            'nama_jenis' => $dataReq['nama_jenis'],
+        ];
 
         Jenis::create($data);
 
@@ -79,32 +72,20 @@ class JenisController extends Controller
         $dataReq = $request->validated();
 
         $data = [
-            'user_id' => Auth::id(),
-            'nama'    => $dataReq['name'],
+            'user_id'    => Auth::id(),
+            'nama_jenis' => $dataReq['nama_jenis'],
         ];
-
-        if ($request->hasFile('foto')) {
-            if ($jenis->foto && Storage::disk('public')->exists($jenis->foto)) {
-                Storage::disk('public')->delete($jenis->foto);
-            }
-            $data['foto'] = $request->file('foto')->store('jenis', 'public');
-        }
 
         $jenis->update($data);
 
-        return redirect()->route('jenis.edit', $jenis->id)->with('success', 'Jenis berhasil diperbarui.');
+        return redirect()->route('jenis.index')->with('success', 'Jenis berhasil diperbarui.');
     }
 
     public function destroy(Jenis $jenis)
     {
         $this->authorize('delete', $jenis);
 
-        // Produk yang memakai jenis ini otomatis jadi tanpa jenis (jenis_id null)
         DB::table('produk')->where('jenis_id', $jenis->id)->update(['jenis_id' => null]);
-
-        if ($jenis->foto) {
-            Storage::disk('public')->delete($jenis->foto);
-        }
 
         $jenis->delete();
 

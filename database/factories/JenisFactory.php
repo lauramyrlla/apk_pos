@@ -19,9 +19,11 @@ class JenisFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::where('role_id', 1)->inRandomOrder()->value('id'),
-            'foto' => 'jenis/' . $this->faker->uuid . '.jpg',
-            'nama' => ucfirst($this->faker->unique()->words(2, true)),
+            'user_id'    => User::factory(),
+            'nama_jenis' => fake()->unique()->randomElement([
+                'Makanan', 'Minuman', 'Elektronik', 'Pakaian',
+                'Food Cat', 'Peralatan Rumah', 'Alat Tulis', 'Mainan',
+            ]),
         ];
     }
 }

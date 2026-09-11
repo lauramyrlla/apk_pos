@@ -13,6 +13,6 @@ class JenisSeeder extends Seeder
      */
     public function run(): void
     {
-        Jenis::factory()->count(30)->create();
+        Jenis::factory()->count(8)->create();
     }
 }

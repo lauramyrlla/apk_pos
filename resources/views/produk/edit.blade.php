@@ -10,6 +10,6 @@
       enctype="multipart/form-data">
 @method('PUT')
 
-@include('Produk._form')
+@include('produk._form')
 </form>
 @endsection

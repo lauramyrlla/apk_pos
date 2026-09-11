@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jenis;
 use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,6 +15,13 @@ class ProdukSeeder extends Seeder
      */
     public function run(): void
     {
-        Produk::factory()->count(100)->create();
+        // Pastikan ada User dan Jenis terlebih dahulu untuk relasi
+        $user = User::first() ?? User::factory()->create();
+        $jenis = Jenis::first() ?? Jenis::factory()->create();
+
+        Produk::factory()->count(100)->create([
+            'user_id'  => $user->id,
+            'jenis_id' => $jenis->id,
+        ]);
     }
 }

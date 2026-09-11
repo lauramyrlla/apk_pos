@@ -33,7 +33,6 @@ class ProdukController extends Controller
             $products = Produk::with('jenis')->latest()->paginate(10)->withQueryString();
         }
 
-
         return view('produk.index', compact('products'));
     }
 
@@ -46,9 +45,10 @@ class ProdukController extends Controller
 
         $produk = new Produk();
 
-        $jenisList = \App\Models\Jenis::orderBy('nama')->get();
+        // Menggunakan nama $jenis agar sesuai dengan _form.blade.php
+        $jenis = \App\Models\Jenis::orderBy('nama_jenis')->get();
 
-        return view('produk.create', compact('produk', 'jenisList'));
+        return view('produk.create', compact('produk', 'jenis'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ProdukController extends Controller
         $data['nama'] = $dataReq['name'];
         $data['harga_beli'] = $dataReq['purchase_price'];
         $data['harga_jual'] = $dataReq['selling_price'];
-        $data['stok'] = $dataReq['stock'] ?? true;
+        $data['stok'] = $dataReq['stock'] ?? 0;
 
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('products', 'public');
@@ -74,7 +74,6 @@ class ProdukController extends Controller
         Produk::create($data);
 
         return redirect()->route('produk.index')->with('success', 'Product created successfully.');
-
     }
 
     /**
@@ -92,9 +91,10 @@ class ProdukController extends Controller
     {
         $this->authorize('update', $produk);
 
-        $jenisList = \App\Models\Jenis::orderBy('nama')->get();
+        // Menggunakan nama $jenis agar sesuai dengan _form.blade.php
+        $jenis = \App\Models\Jenis::orderBy('nama_jenis')->get();
 
-        return view('produk.edit', compact('produk', 'jenisList'));
+        return view('produk.edit', compact('produk', 'jenis'));
     }
 
     /**
@@ -102,6 +102,8 @@ class ProdukController extends Controller
      */
     public function update(UpdateRequest $request, Produk $produk)
     {
+        $this->authorize('update', $produk);
+
         $dataReq = $request->validated();
 
         $data = [
@@ -113,17 +115,14 @@ class ProdukController extends Controller
             'stok'        => $dataReq['stock'],
         ];
 
-        // Jika upload foto baru
         if ($request->hasFile('foto')) {
-
-            // Hapus foto lama (jika ada & memang tersimpan)
             if (
                 $produk->foto &&
                 Storage::disk('public')->exists($produk->foto)
             ) {
                 Storage::disk('public')->delete($produk->foto);
             }
-            // Simpan foto baru
+
             $data['foto'] = $request->file('foto')->store('products', 'public');
         }
 
@@ -135,7 +134,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Produk $produk)
+    public function destroy(Produk $produk)
     {
         $this->authorize('delete', $produk);
 

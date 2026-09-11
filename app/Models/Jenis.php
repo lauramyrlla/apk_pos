@@ -14,7 +14,7 @@ class Jenis extends Model
     protected $fillable = [
         'user_id',
         'foto',
-        'nama',
+        'nama_jenis',
     ];
 
     public function user()

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User; // Ditambahkan agar sistem tahu lokasi model User
+use App\Models\Jenis; // Ditambahkan agar sistem tahu lokasi model User
 use App\Models\Produk;
 use Illuminate\Database\Eloquent\Factories\Factory; // Memperbaiki HasFactory menjadi Factory
 
@@ -22,6 +23,7 @@ class ProdukFactory extends Factory
 
         return [
             'user_id' => User::where('role_id', 1)->inRandomOrder()->value('id'),
+            'jenis_id' => Jenis::inRandomOrder()->first()?->id ?? Jenis::factory(),
             'foto' => 'produk/' . $this->faker->uuid . '.jpg',
             'nama' => $this->faker->words(3, true),
             'harga_beli' => $hargaBeli,

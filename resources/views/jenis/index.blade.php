@@ -34,7 +34,6 @@
         <tr>
           <th scope="col">No</th>
           <th scope="col">Pengguna</th>
-          <th scope="col">Foto</th>
           <th scope="col">Jenis</th>
           <th scope="col">Aksi</th>
         </tr>
@@ -44,15 +43,7 @@
     <tr>
         <th scope="row">{{ $jenisList->firstItem() + $loop->index }}</th>
         <td>{{ $jenis->user?->name ?? 'Tidak Ada Pengguna' }}</td>
-        <td>
-            @if ($jenis->foto)
-                <img src="{{ asset('storage/'.$jenis->foto) }}" width="40" height="40" class="img-thumbnail" style="object-fit: cover;">
-            @else
-                <span class="text-muted">-</span>
-            @endif
-        </td>
-
-        <td>{{ $jenis->nama }}</td>
+        <td>{{ $jenis->nama_jenis }}</td>
         <td>
             <div class="d-flex align-items-center gap-1">
                 @can('update', $jenis)
@@ -76,7 +67,7 @@
 
     @empty
     <tr>
-        <td colspan="9" class="text-center py-4 text-muted">
+        <td colspan="4" class="text-center py-4 text-muted">
             <h4>🐾 Data tidak tersedia.</h4>
         </td>
     </tr>
