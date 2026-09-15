@@ -16,8 +16,8 @@
             </div>
 
             <div class="brand-top">
-                <div class="brand-badge">🐾 POS Food Cat</div>
-                <h2>Sistem Pengelolaan Toko Makanan Kucing</h2>
+                <div class="brand-badge">🐾 PetShop</div>
+                <h2>Sistem Pengelolaan PetShop</h2>
                 <p>Pantau stok produk dan catat transaksi penjualan harian dengan cepat, aman, dan efisien.</p>
             </div>
 

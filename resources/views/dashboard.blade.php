@@ -6,14 +6,12 @@
 
 @include('layouts.navbar')
 
-
+<br>
 <div class="text-center container mt-4 dashboard-page py-4">
-    <!-- Row 1: Today's Sales -->
     <div class="row mb-4">
         <div class="col-md-12">
             <h1>Penjualan Hari Ini</h1>
         </div>
-        <!-- Kolom Kiri: Total Nilai Penjualan -->
         <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-header">

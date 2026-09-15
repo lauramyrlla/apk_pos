@@ -21,8 +21,7 @@
                 name="search"
                 value="{{ request('search') }}"
                 class="form-control"
-                placeholder="Cari nama produk"
-            >
+                placeholder="Cari nama produk">
             <button class="btn btn-outline-secondary" type="submit">
                 Cari
             </button>

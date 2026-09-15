@@ -15,7 +15,9 @@
 @endif
 
 <h1>🐾 Halaman Penjualan</h1>
+<div class="">
 <a href="{{ route('penjualan.create') }}" class="btn btn-buat mb-3">Tambah</a>
+</div>
 
 <form action="{{ route('penjualan.index') }}" method="GET" class="mb-3">
     <div class="input-group">

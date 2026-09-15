@@ -45,11 +45,8 @@
                             <button class="btn btn-outline-primary w-100 text-start p-2 {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}">
                                 <div class="d-flex align-items-center gap-2">
 
-                                    {{-- Gambar produk --}}
-
-                                    {{-- Nama & harga --}}
                                     <div>
-                                        <div class="fw-semibold">🍖 {{ $product->nama }}</div>
+                                        <div class="fw-semibold"> {{ $product->nama }}</div>
                                         <small class="text-muted">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</small>
                                     </div>
 

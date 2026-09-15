@@ -34,5 +34,6 @@ Route::middleware('auth')->group(function () {
      Route::resource('jenis', JenisController::class)->parameters(['jenis' => 'jenis']);
      Route::resource('/penjualan', PenjualanController::class);
      Route::resource('/itempenjualan', ItemPenjualanController::class);
-     });
+     Route::get('/tentang', function () {return view('tentang.index'); })->name('tentang');
+    });
 });

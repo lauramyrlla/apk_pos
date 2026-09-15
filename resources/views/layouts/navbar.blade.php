@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
     <div class="container">
-        <a class="navbar-brand brand-badge" href="#">
-            <span class="brand-icon">🐾</span>
-            <span class="brand-text">POS <span class="brand-accent">Food Cat</span></span>
-        </a>
+        <a class="navbar-brand brand-badge" href="{{ route('tentang') }}">
+    <span class="brand-icon">🐾</span>
+    <span class="brand-accent">Petshop</span>
+</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 margin-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
                 </li>

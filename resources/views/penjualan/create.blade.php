@@ -101,7 +101,7 @@
 
                             <td>
                                 @can('delete', $item)
-                                    <!-- PERBAIKAN LANGSUNG: Mengganti form destroy yang error menjadi hapus instan berbasis tampilan -->
+                                   
                                     <a href="" class="btn btn-danger btn-sm" onclick="this.closest('tr').remove(); return false;">
                                         Hapus
                                     </a>
