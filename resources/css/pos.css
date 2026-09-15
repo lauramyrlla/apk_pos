@@ -1084,90 +1084,140 @@ body:has(.penjualan-page) {
     object-fit: cover;
 }
 
-/* login */
- .login-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-        padding: 1rem;
-    }
+/* ===== Login Wrapper (Latar Belakang) ===== */
+.login-wrapper {
+    position: min-height;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #B3C8CF 0%, #E5E1DA 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    overflow-y: auto; /* Agar bisa di-scroll jika layar HP terlalu pendek */
+}
 
+/* ===== Card Utama ===== */
+.login-shell {
+    width: 100%;
+    max-width: 860px;
+    min-height: 520px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(137, 168, 178, 0.4);
+    display: flex;
+    flex-direction: column; /* Default HP: Susun Atas-Bawah */
+    animation: fadeInUp 0.5s ease-out;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+}
+
+/* ===== Panel Kiri: Branding ===== */
+.login-brand {
+    flex: 1;
+    background: linear-gradient(160deg, #6f939d 0%, #89A8B2 45%, #B3C8CF 100%);
+    color: #fff;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-brand .paw-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    font-size: 2.4rem;
+    line-height: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    pointer-events: none;
+    transform: rotate(-8deg) scale(1.3);
+}
+
+.login-brand .brand-top {
+    position: relative;
+    z-index: 1;
+}
+
+.login-brand .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.18);
+    border-radius: 2rem;
+    padding: 0.4rem 0.9rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.login-brand h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
+
+.login-brand p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.88rem;
+    margin-bottom: 0;
+}
+
+/* Bagian Ilustrasi SVG Kucing */
+.cat-illustration {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.cat-illustration svg {
+    max-width: 160px;
+    height: auto;
+}
+
+/* ===== Panel Kanan: Form Login ===== */
+.login-form-panel {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+}
+
+/* ===== MEDIA QUERIES (Aturan Laptop & Tablet) ===== */
+@media (min-width: 768px) {
     .login-shell {
-        width: 100%;
-        max-width: 860px;
-        min-height: 520px;
-        border-radius: 1.5rem;
-        overflow: hidden;
-        box-shadow: 0 25px 60px rgba(137, 168, 178, 0.4);
-        display: flex;
-        animation: fadeInUp 0.5s ease-out;
-        position: relative;
-        z-index: 2;
+        flex-direction: row; /* Desktop/Tablet: Bersebelahan Kiri & Kanan */
     }
 
-    /* ===== Panel kiri: branding ===== */
     .login-brand {
         flex: 1 1 45%;
-        background: linear-gradient(160deg, #6f939d 0%, #89A8B2 45%, #B3C8CF 100%);
-        color: #fff;
         padding: 2.75rem 2.25rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .login-brand .paw-pattern {
-        position: absolute;
-        inset: 0;
-        opacity: 0.12;
-        font-size: 2.4rem;
-        line-height: 1;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
-        padding: 1.5rem;
-        pointer-events: none;
-        transform: rotate(-8deg) scale(1.3);
-    }
-
-    .login-brand .brand-top {
-        position: relative;
-        z-index: 1;
-    }
-
-    .login-brand .brand-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(255,255,255,0.18);
-        border-radius: 2rem;
-        padding: 0.4rem 0.9rem;
-        font-weight: 700;
-        font-size: 1.05rem;
-        margin-bottom: 1.75rem;
     }
 
     .login-brand h2 {
         font-size: 1.6rem;
-        font-weight: 800;
-        margin-bottom: 0.6rem;
-        line-height: 1.3;
     }
 
     .login-brand p {
-        color: rgba(255,255,255,0.85);
         font-size: 0.92rem;
-        margin-bottom: 0;
     }
+
+    .cat-illustration svg {
+        max-width: 200px;
+    }
+
+    .login-form-panel {
+        padding: 2.75rem 2.5rem;
+    }
+}
 
     .cat-illustration {
         position: relative;

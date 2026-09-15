@@ -12,9 +12,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Beranda</a>
                 </li>
+                @if (auth()->user()->role->name === 'admin')
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Pengguna</a>
+                    <a class="nav-link {{ Request::is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Pengguna</a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('jenis') ? 'active' : '' }}" href="{{ route('jenis.index') }}">Jenis</a>
                 </li>
