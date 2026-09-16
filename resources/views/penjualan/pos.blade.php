@@ -19,9 +19,7 @@
             🐾 {{ $mode === 'edit' ? 'Edit Penjualan' : "Tambah Penjualan" }}
         </h4>
 
-        <a href="{{ route('penjualan.index') }}" class="btn btn-outline-secondary btn-sm">
-            &larr; Kembali
-        </a>
+         <a href="{{ route('penjualan.index') }}" class="btn btn-secondary mt-3" style="padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">Kembali</a>
     </div>
 
     <div class="row">

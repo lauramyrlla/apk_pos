@@ -1389,3 +1389,17 @@ body:has(.penjualan-page) {
     max-width: 640px;
     margin: 0 auto;
 }
+/* kembali */
+/* tentang.blade.php */
+
+.tentang-page .btn-secondary {
+    background-color: #89A8B2;
+    border-color: #89A8B2;
+    color: #fff;
+}
+
+.tentang-page .btn-secondary:hover {
+    background-color: #6f939d;
+    border-color: #6f939d;
+    color: #fff;
+}

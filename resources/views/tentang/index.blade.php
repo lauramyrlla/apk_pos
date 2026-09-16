@@ -10,6 +10,9 @@
 
     <h1 class="mb-3">🐾 Tentang Petshop</h1>
 
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary mt-3" style="padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">Kembali</a>
+         <br>
+         <br>
     <div class="card">
         <div class="card-header">
             Profil Toko
