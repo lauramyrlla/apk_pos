@@ -6,7 +6,6 @@
 
 @include('layouts.navbar')
 
-<br>
 <div class="text-center container mt-4 dashboard-page py-4">
     <div class="row mb-4">
         <div class="col-md-12">

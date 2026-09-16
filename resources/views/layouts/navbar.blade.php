@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm  ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top ">
     <div class="container">
         <a class="navbar-brand brand-badge" href="{{ route('tentang') }}">
             <span class="brand-icon">🐾</span>

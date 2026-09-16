@@ -24,12 +24,22 @@
                     <th>Status</th>
                     <td>: {{ ucfirst($penjualan->status) }}</td>
                 </tr>
-                <tr>
-                    <th>Total Pembayaran</th>
-                    <td>
-                        : <strong>Rp {{ number_format($penjualan->total_pembayaran, 0, ',', '.') }}</strong>
-                    </td>
-                </tr>
+               @if($penjualan->metode_pembayaran === 'CASH')
+<tr>
+    <th>Uang Dibayar</th>
+    <td>: Rp {{ number_format($penjualan->uang_dibayar, 0, ',', '.') }}</td>
+</tr>
+<tr>
+    <th>Kembalian</th>
+    <td>: <strong>Rp {{ number_format($penjualan->kembalian, 0, ',', '.') }}</strong></td>
+</tr>
+@endif
+@if($penjualan->metode_pembayaran === 'QRIS')
+<div class="text-center my-3">
+    {!! QrCode::size(150)->generate($qrisData) !!}
+    <div class="small text-muted">QR Pembayaran Transaksi #{{ $penjualan->id }}</div>
+</div>
+@endif
             </table>
         </div>
     </div>

@@ -118,23 +118,57 @@
 
                 <div class="card-footer">
                     <strong>Total: Rp {{ number_format($sale->total_pembayaran, 0, ',', '.') }}</strong>
-                    
+
                     <form method="POST"
                         action="{{ route('penjualan.update', $sale->id) }}"
                         onsubmit="return confirm('Yakin ingin checkout?')" class="mt-2">
                     @csrf
                     @method('PUT')
 
-                        <select name="payment_method" class="form-select mb-2" {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}>
+                        <select name="payment_method" id="payment_method" class="form-select mb-2"
+                            onchange="toggleMetodeBayar()"
+                            {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}>
                             <option value="">Pilih Pembayaran</option>
                             <option value="CASH">Cash</option>
                             <option value="QRIS">QRIS</option>
                         </select>
 
+                        {{-- Muncul kalau CASH --}}
+                        <div id="cashBox" class="mb-2" style="display:none;">
+                            <label class="form-label small">Uang Dibayar</label>
+                            <input type="number" name="uang_dibayar" id="uang_dibayar"
+                                class="form-control" placeholder="Masukkan nominal uang"
+                                oninput="hitungKembalian()">
+                            <small class="text-muted">Kembalian: Rp <span id="kembalianPreview">0</span></small>
+                        </div>
+
+                        {{-- Muncul kalau QRIS --}}
+                        <div id="qrisBox" class="mb-2 text-center" style="display:none;">
+                            {!! QrCode::size(200)->generate($qrisData) !!}
+                            <div class="small text-muted">Scan QR untuk membayar Rp {{ number_format($sale->total_pembayaran, 0, ',', '.') }}</div>
+                        </div>
+
                         <button class="btn btn-success w-100" {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}>
                             Checkout
                         </button>
                     </form>
+
+                    <script>
+                    function toggleMetodeBayar() {
+                        const val = document.getElementById('payment_method').value;
+                        document.getElementById('cashBox').style.display = val === 'CASH' ? 'block' : 'none';
+                        document.getElementById('qrisBox').style.display = val === 'QRIS' ? 'block' : 'none';
+                    }
+
+                    function hitungKembalian() {
+                        const total = {{ $sale->total_pembayaran }};
+                        const bayar = parseInt(document.getElementById('uang_dibayar').value) || 0;
+                        const kembalian = bayar - total;
+                        document.getElementById('kembalianPreview').innerText =
+                            (kembalian > 0 ? kembalian : 0).toLocaleString('id-ID');
+                    }
+                    </script>
+
                     @can('delete', $sale)
                     <form action="{{ route('penjualan.destroy', $sale->id) }}" method="POST"
                     onsubmit="return confirm('Yakin ingin membatalkan transaksi?')"class="mt-3" >

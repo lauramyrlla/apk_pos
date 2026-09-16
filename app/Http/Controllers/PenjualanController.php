@@ -69,7 +69,9 @@ class PenjualanController extends Controller
 
         $mode = 'create';
 
-        return view('penjualan.pos', compact('sale', 'products', 'mode'));
+        $qrisData = 'QRIS-PEMBAYARAN-' . $sale->id . '-' . $sale->total_pembayaran;
+
+        return view('penjualan.pos', compact('sale', 'products', 'mode', 'qrisData'));
     }
 
     /**
@@ -85,10 +87,11 @@ class PenjualanController extends Controller
      */
     public function show(string $id)
     {
-        // PERBAIKAN LANGSUNG: Diubah jadi $penjualan agar tidak error Undefined Variable di halaman detail
         $penjualan = Penjualan::with('itemPenjualan.produk')->findOrFail($id);
 
-        return view('penjualan.show', compact('penjualan'));
+        $qrisData = 'QRIS-PEMBAYARAN-' . $penjualan->id . '-' . $penjualan->total_pembayaran; 
+
+        return view('penjualan.show', compact('penjualan', 'qrisData')); 
     }
 
     /**
@@ -104,7 +107,9 @@ class PenjualanController extends Controller
         $products = Produk::orderBy('nama')->get();
         $mode = 'edit';
 
-        return view('penjualan.pos', compact('sale', 'products', 'mode'));
+        $qrisData = 'QRIS-PEMBAYARAN-' . $sale->id . '-' . $sale->total_pembayaran; 
+
+        return view('penjualan.pos', compact('sale', 'products', 'mode', 'qrisData')); 
     }
 
     /**
@@ -113,7 +118,8 @@ class PenjualanController extends Controller
     public function update(Request $request, Penjualan $penjualan)
     {
         $request->validate([
-            'payment_method' => 'required|in:CASH,QRIS'
+            'payment_method' => 'required|in:CASH,QRIS',
+            'uang_dibayar'   => 'required_if:payment_method,CASH|nullable|integer|min:0', 
         ]);
 
         if ($penjualan->status !== 'OPEN') {
@@ -127,9 +133,20 @@ class PenjualanController extends Controller
         \DB::transaction(function () use ($penjualan, $request) {
             $total = $penjualan->itemPenjualan()->sum('subtotal');
 
+            
+            $uangDibayar = $request->payment_method === 'CASH'
+                ? (int) $request->uang_dibayar
+                : $total;
+
+            if ($request->payment_method === 'CASH' && $uangDibayar < $total) {
+                abort(422, 'Uang dibayar kurang dari total belanja');
+            }
+
             $penjualan->update([
                 'metode_pembayaran' => $request->payment_method,
                 'total_pembayaran' => $total,
+                'uang_dibayar' => $uangDibayar,   
+                'kembalian' => $uangDibayar - $total, 
                 'status' => 'COMPLETED'
             ]);
         });

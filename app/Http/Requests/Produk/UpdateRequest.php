@@ -14,12 +14,12 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'jenis_id'       => ['required', 'exists:jenis,id'],
-            'name'           => ['required', 'string', 'max:255'],
-            'purchase_price' => ['required', 'integer', 'min:0'],
-            'selling_price'  => ['required', 'integer', 'min:0'],
-            'stock'          => ['required', 'integer', 'min:0'],
-            'foto'           => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'jenis_id'       => 'required', 'exists:jenis,id',
+            'name'           => 'required', 'string', 'max:255',
+            'purchase_price' => 'required', 'integer', 'min:0',
+            'selling_price'  => 'required', 'integer', 'min:0', 'gte:purchase_price',
+            'stock'          => 'required', 'integer', 'min:0',
+            'foto'           => 'nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048',
         ];
     }
 
@@ -31,6 +31,7 @@ class UpdateRequest extends FormRequest
             'name.required'           => 'Nama produk wajib diisi.',
             'purchase_price.required' => 'Harga beli wajib diisi.',
             'selling_price.required'  => 'Harga jual wajib diisi.',
+            'selling_price.gte'       => 'Harga jual harus lebih besar atau sama dengan harga beli.',
             'stock.required'          => 'Stok wajib diisi.',
             'foto.image'              => 'File harus berupa gambar.',
             'foto.max'                => 'Ukuran foto maksimal 2MB.',

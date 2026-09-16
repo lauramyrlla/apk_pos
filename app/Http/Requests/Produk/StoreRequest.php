@@ -27,8 +27,9 @@ class StoreRequest extends FormRequest
             'foto'           => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'name'           => 'required|string|max:255',
             'purchase_price' => 'required|integer|min:0',
-            'selling_price'  => 'required|integer|min:0',
+            'selling_price'  => 'required|integer|min:0|gte:purchase_price',
             'stock'          => 'required|integer|min:0',
+            
         ];
     }
 
@@ -44,6 +45,7 @@ class StoreRequest extends FormRequest
             'purchase_price.integer'  => 'purchase price harus diisi bilangan bulat.',
             'selling_price.required'  => 'selling price wajib diisi.',
             'selling_price.integer'   => 'selling price harus diisi bilangan bulat.',
+            'selling_price.gte'       => 'Harga jual harus lebih besar atau sama dengan harga beli.',
             'stock.required'          => 'Stock wajib diisi.',
             'stock.integer'           => 'Stock harus diisi angka.',
         ];
