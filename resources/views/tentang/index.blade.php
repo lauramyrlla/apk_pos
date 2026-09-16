@@ -1,25 +1,52 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
-@section('content') 
-<div class="container mt-4">
-    <div class="card shadow-sm border-0">
-        <div class="card-body p-4">
-            <h2 class="card-title text-primary mb-4">🐾 Tentang Petshop</h2>
-            <p class="lead">Aplikasi POS penyedia kebutuhan dan makanan kucing berkualitas tinggi untuk anabul kesayangan Anda.</p>
-            
+@section('title', 'Tentang')
+
+@section('content')
+
+@include('layouts.navbar')
+
+<div class="container tentang-page py-4">
+
+    <h1 class="mb-3">🐾 Tentang Petshop</h1>
+
+    <div class="card">
+        <div class="card-header">
+            Profil Toko
+        </div>
+        <div class="card-body">
+            <p class="lead mb-4">
+                Petshop kami menyediakan makanan kucing berkualitas tinggi serta berbagai kebutuhan kucing lainnya
+                seperti mangkuk makan, water fountain, hingga produk perawatan kesehatan kucing — semua untuk anabul kesayangan Anda.
+            </p>
+
             <hr>
 
             <div class="mb-4">
-                <h5>📍 Alamat Toko</h5>
-                <p class="text-muted">Jl. Kucing Bahagia No. 123, Blok C, Kota Bandung, Jawa Barat</p>
+                <h3> Produk yang Kami Sediakan</h3>
+                <ul class="mb-0">
+                    <li>Makanan &amp; camilan kucing</li>
+                    <li>Perlengkapan makan &amp; minum (mangkuk, water fountain)</li>
+                    <li>Produk perawatan &amp; kesehatan kucing</li>
+                    <li>Kebutuhan kucing lainnya</li>
+                </ul>
             </div>
 
-            <div class="mb-3">
-                <h5>📞 Kontak & Layanan</h5>
+            <hr>
+
+            <div class="mb-4">
+                <h3>📍 Alamat Toko</h3>
+                <p class="text-muted mb-0">Jl. Kucing Bahagia No. 123, Blok C, Kota Bandung, Jawa Barat</p>
+            </div>
+
+            <div>
+                <h3>📞 Kontak & Layanan</h3>
                 <p class="mb-1"><strong>WhatsApp:</strong> 0812-3456-7890</p>
                 <p class="mb-0"><strong>Email:</strong> support@foodcat.com</p>
             </div>
         </div>
     </div>
+
 </div>
+
 @endsection
