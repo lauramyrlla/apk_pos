@@ -149,7 +149,7 @@
                         {{-- Muncul kalau QRIS --}}
                         <div id="qrisBox" class="mb-2 text-center" style="display:none;">
                             {!! QrCode::size(200)->generate($qrisData) !!}
-                            <div class="small text-muted">Scan QR untuk membayar Rp {{ number_format($sale->total_pembayaran, 0, ',', '.') }}</div>
+                            <div class="small text-muted">Scan QR untuk membayar </div>
                         </div>
 
                         <button class="btn btn-success w-100" {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}>
