@@ -165,12 +165,12 @@
                     }
 
                     function hitungKembalian() {
-                        const total = {{ $sale->total_pembayaran }};
-                        const bayar = parseInt(document.getElementById('uang_dibayar').value) || 0;
-                        const kembalian = bayar - total;
-                        document.getElementById('kembalianPreview').innerText =
-                            (kembalian > 0 ? kembalian : 0).toLocaleString('id-ID');
-                    }
+                    const total = {{ $sale->itemPenjualan->sum('subtotal') }};
+                    const bayar = parseInt(document.getElementById('uang_dibayar').value) || 0;
+                    const kembalian = bayar - total;
+                    document.getElementById('kembalianPreview').innerText =
+                        (kembalian > 0 ? kembalian : 0).toLocaleString('id-ID');
+                }
                     </script>
 
                     @can('delete', $sale)
