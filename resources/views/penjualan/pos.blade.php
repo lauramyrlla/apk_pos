@@ -14,9 +14,15 @@
         </div>
     @endif
 
-    <h4 class="mb-3">
-        🐾 {{ $mode === 'edit' ? 'Edit Penjualan' : "Tambah Penjualan" }}
-    </h4>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-0">
+            🐾 {{ $mode === 'edit' ? 'Edit Penjualan' : "Tambah Penjualan" }}
+        </h4>
+
+        <a href="{{ route('penjualan.index') }}" class="btn btn-outline-secondary btn-sm">
+            &larr; Kembali
+        </a>
+    </div>
 
     <div class="row">
 
