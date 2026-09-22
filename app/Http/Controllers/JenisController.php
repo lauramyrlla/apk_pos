@@ -84,8 +84,8 @@ class JenisController extends Controller
     public function destroy(Jenis $jenis)
     {
         $this->authorize('delete', $jenis);
-
-        DB::table('produk')->where('jenis_id', $jenis->id)->update(['jenis_id' => null]);
+       
+        DB::table('produk')->where('jenis_id', $jenis->id)->delete();
 
         $jenis->delete();
 

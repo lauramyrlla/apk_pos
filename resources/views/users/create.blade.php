@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.navbar')
 <div class="form-user-wrapper">
     <h4>Tambah Pengguna</h4>
 

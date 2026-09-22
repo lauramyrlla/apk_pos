@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penjualan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users', 'id')->restrictOnDelete();
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->integer('total_pembayaran');
             $table->string('metode_pembayaran');
             $table->enum('status', ['OPEN', 'COMPLETED']);

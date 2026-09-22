@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.navbar')
 <div class="form-jenis-wrapper container py-4">
     <h4>Tambah Jenis</h4>
 

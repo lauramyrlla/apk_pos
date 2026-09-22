@@ -53,7 +53,7 @@ class UserController extends Controller
 
 User::create($data);
 
-return redirect()->route('admin.users')->with('success', 'User berhasil dibuat');
+return redirect()->route('admin.users.index')->with('success', 'User berhasil dibuat');
 
     }
 
@@ -91,16 +91,35 @@ return redirect()->route('admin.users')->with('success', 'User berhasil dibuat')
 
         $user->save();
 
-         return redirect()->route('admin.users.index')->with('success', 'User updated');
+         return redirect()->route('admin.users.index')->with('success', 'Pengguna berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
-    {
-        $user->delete();
-
-        return back()->with('success', 'User deleted');
+{
+  
+    if (method_exists($user, 'produk')) {
+        $produkIds = $user->produk()->pluck('id');
+        \DB::table('item_penjualan')->whereIn('produk_id', $produkIds)->delete();
+        
+       
+        $user->produk()->delete();
     }
+
+   
+    if (method_exists($user, 'penjualan')) {
+        $penjualanIds = $user->penjualan()->pluck('id'); 
+        \DB::table('item_penjualan')->whereIn('penjualan_id', $penjualanIds)->delete();
+        
+        
+        $user->penjualan()->delete();
+    }
+
+   
+    $user->delete();
+
+    return redirect()->route('admin.users.index')->with('success', 'Pengguna berhasil dihapus');
+}
 }

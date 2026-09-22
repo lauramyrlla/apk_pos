@@ -3,6 +3,7 @@
 @section('title', 'Edit Jenis')
 
 @section('content')
+@include('layouts.navbar')
 <div class="form-jenis-wrapper container py-4">
     <h4>Edit Jenis</h4>
 

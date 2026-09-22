@@ -36,7 +36,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Email</th>
-                <th scope="col">Peran</th>
+                
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -46,7 +46,7 @@
                     <td>{{ $users->firstItem() + $loop->index }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role->nama ?? '-' }}</td>
+                    
                     <td>
                         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-edit-akun">
                             Edit Akun

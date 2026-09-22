@@ -50,7 +50,7 @@
                     <a href="{{ route('jenis.edit', $jenis) }}" class="btn btn-edit-akun btn-sm">Edit</a>
                 @endcan
 
-                <span class="text-muted">||</span>
+                <span class="text-muted"></span>
 
                 @can('delete', $jenis)
                 <form action="{{ route('jenis.destroy', $jenis) }}" method="POST" class="d-inline">

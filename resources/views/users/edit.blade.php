@@ -3,6 +3,8 @@
 @section('title', 'Edit User')
 
 @section('content')
+@include('layouts.navbar')
+<div class="form-produk-wrapper">
 <h4>Edit User</h4>
 
 <form action="{{ route('admin.users.update', $user) }}" method="post">

@@ -39,7 +39,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Tanggal Transaksi</th>
-            <th scope="col">Kasir</th>
+            <th scope="col">Admin</th>
             <th scope="col">Total Pembayaran</th>
             <th scope="col">Metode Pembayaran</th>
             <th scope="col">Status</th>
@@ -59,13 +59,14 @@
             <!-- PERBAIKAN: Menambahkan parameter $sale dan menutup kurung sintaks Blade }} dengan benar -->
             <a href="{{ route('penjualan.show', $sale) }}" class="btn btn-detail">Detail</a>
             @can('view', $sale)
-            ||
+            
             <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-edit-akun">Edit</a>
             @endcan
             @can('delete', $sale)
-            ||
+            
             <form action="{{ route('penjualan.destroy', $sale) }}" method="POST" class="d-inline">
                 @csrf
+                
                 @method('DELETE')
                 <button type="submit" class="btn btn-hapus" onclick="return confirm('Apakah anda yakin akan menghapus penjualan ini?')">
                     Hapus

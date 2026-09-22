@@ -10,7 +10,7 @@
                 <div class="upload-dropzone" id="dropzone">
                     <p class="upload-text">Tarik file ke sini, atau</p>
                     <button type="button" class="btn btn-pilih-file" id="btnPilihFile">Pilih file</button>
-                    <p class="upload-hint">PNG, JPG · maks 2MB</p>
+                    <p class="upload-hint">maks 2MB</p>
                 </div>
 
                 <input type="file"

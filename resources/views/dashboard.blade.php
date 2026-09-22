@@ -37,7 +37,7 @@
     <!-- Row 2: Cash & Payment Status -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <h1>Status Kas & Pembayaran</h1>
+            <h1>Status Pembayaran</h1>
         </div>
         <!-- Kolom Kiri: Total Pembayaran Tunai -->
         <div class="col-md-6 mb-3">
@@ -83,12 +83,16 @@
                         <tr>
                             <td>{{ $produkStokRendah->firstItem() + $index }}</td>
                             <td>{{ $produk->nama }}</td>
-                            <td>{{ $produk->stok }}</td>
+                            <td>
+                                <span class="">
+                                    {{ $produk->stok }}
+                                </span>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="text-muted text-center">
-                                Seluruh produk berada dalam kondisi stok aman.
+                            <td colspan="4" class="text-muted text-center">
+                                Tidak Ada Data
                             </td>
                         </tr>
                     @endforelse
@@ -118,7 +122,7 @@
                     @empty
                         <tr>
                             <td colspan="3" class="text-muted text-center">
-                                Seluruh produk berada dalam kondisi stok aman.
+                                Tidak ada produk habis
                             </td>
                         </tr>
                     @endforelse

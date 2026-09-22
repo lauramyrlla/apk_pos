@@ -3,6 +3,7 @@
 @section('title', 'Edit Produk')
 
 @section('content')
+@include('layouts.navbar')
 <div class="form-produk-wrapper">
 <h4>Edit Produk</h4>
 </div>
